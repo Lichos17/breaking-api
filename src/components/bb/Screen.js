@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useFetch } from '../../hooks/useFetch';
 import { Buttons } from '../UI/Buttons';
+import { Card } from '../UI/Card';
 import { Navbar } from '../UI/Navbar';
 
 export const Screen = () => {
@@ -12,18 +13,18 @@ export const Screen = () => {
 
 
   const filteredAPI = () => {
-    return data.slice( currentPage, currentPage + 5  )
+    return data.slice( currentPage, currentPage + 6  )
   }
 
   const nextPage = () => {
-    if( data.length > currentPage + 5 ){
-      setCurrentPage( currentPage + 5 );
+    if( data.length > currentPage + 6 ){
+      setCurrentPage( currentPage + 6 );
     }
   }
 
   const prevPage = () => {
     if( currentPage > 0 ){
-      setCurrentPage( currentPage - 5 );
+      setCurrentPage( currentPage - 6 );
     }
   }
 
@@ -36,20 +37,12 @@ export const Screen = () => {
           ? <h1>Loading</h1>
           : ( 
             filteredAPI().map( dataChild => (
-              <div
-                style={{ background: `url(${dataChild.img})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}
-                className="card"
-                key={ dataChild.char_id }
-              >
-                <div className="card__textos">
-                  <h3 className="card__title">{dataChild.name}</h3>
-                  <p className="card__nickname">{dataChild.nickname}</p>
-                  <Link
-                    className="btn btn--card"
-                    to={ `./character/${ dataChild.name }` }
-                  >Learn More</Link>
-                </div>
-              </div>
+              <Card 
+                img={ dataChild.img }
+                id={ dataChild.char_id }
+                name={ dataChild.name }
+                nickname={ dataChild.nickname }
+              />
             ) )
            )
         }
