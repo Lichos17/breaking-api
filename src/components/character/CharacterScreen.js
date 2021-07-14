@@ -47,7 +47,7 @@ export const CharacterScreen = () => {
                   <p><span className="info__span">Ocupation:</span> { data[0].occupation[0] }</p>
                   <p><span className="info__span">Status:</span> { data[0].status }</p>
                   { quote && ( <p><span className="info__span">Quote:</span> { ` "${quote}"` }</p>) }
-                  <Link to='/' className="btn btn--card">Go Back</Link>
+                  <Link to='/screen/breaking bad' className="btn btn--card">Go Back</Link>
                 </div>
               </>
           )

@@ -1,8 +1,11 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import { useFetch } from '../../hooks/useFetch'
-import { useForm } from '../../hooks/useForm'
-import { Navbar } from '../UI/Navbar'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useFetch } from '../../hooks/useFetch';
+import { useForm } from '../../hooks/useForm';
+import { Card } from '../UI/Card';
+import { Navbar } from '../UI/Navbar';
+
+
 export const SearchScreen = () => {
 
   const [ formValues, handleInputChange ] = useForm( {
@@ -26,20 +29,12 @@ export const SearchScreen = () => {
           ? <h1>Loading</h1>
           : ( 
             data.map( dataChild => (
-              <div
-                style={{ background: `url(${dataChild.img})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}
-                className="card"
+              <Card
+                img={ dataChild.img }
                 key={ dataChild.char_id }
-              >
-                <div className="card__textos">
-                  <h3 className="card__title">{dataChild.name}</h3>
-                  <p className="card__nickname">{dataChild.nickname}</p>
-                  <Link
-                    className="btn btn--card"
-                    to={ `./character/${ dataChild.name }` }
-                  >Learn More</Link>
-                </div>
-              </div>
+                name={ dataChild.name }
+                nickname={ dataChild.nickname }
+              />
             ) )
            )
         }

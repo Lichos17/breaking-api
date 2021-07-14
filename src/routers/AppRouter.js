@@ -5,8 +5,7 @@ import {
   Route,
   Redirect
 } from "react-router-dom";
-import { Screen } from "../components/bb/Screen";
-import { BetterCallScreen } from "../components/bcs/BetterCallScreen";
+import { Screen } from "../components/UI/Screen";
 import { CharacterScreen } from "../components/character/CharacterScreen";
 import { SearchScreen } from "../components/search/SearchScreen";
 import { Header } from "../components/UI/Header";
@@ -17,11 +16,10 @@ export const AppRouter = () => {
       <Header />
       <div>
         <Switch>
-          <Route exact path="/" component={ Screen } />
-          <Route exact path="/bcs" component={ BetterCallScreen } />
+          <Route exact path="/screen/:id" component={ Screen } />
           <Route exact path="/search" component={ SearchScreen } />
           <Route exact path="/character/:id" component={ CharacterScreen } />
-          <Redirect to='/' />
+          <Redirect to='/screen/breaking bad' />
         </Switch>
       </div>
     </Router>

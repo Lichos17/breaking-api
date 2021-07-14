@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect, useParams } from 'react-router-dom';
 import { useFetch } from '../../hooks/useFetch';
-import { Buttons } from '../UI/Buttons';
-import { Card } from '../UI/Card';
-import { Navbar } from '../UI/Navbar';
+import { Buttons } from './Buttons';
+import { Card } from './Card';
+import { Navbar } from './Navbar';
 
 export const Screen = () => {
 
+  const { id } = useParams();
 
-  const { data, loading } = useFetch( 'https://www.breakingbadapi.com/api/characters?category=Breaking+Bad' );
+
+  const { data, loading } = useFetch( `https://www.breakingbadapi.com/api/characters?category=${ id }` );
   const [currentPage, setCurrentPage] = useState(0);
 
 
@@ -29,6 +31,10 @@ export const Screen = () => {
   }
 
 
+  if( id !== 'breaking bad' && id !== 'better call saul' ){
+    return <Redirect to='../screen/breaking bad' />
+  }
+
   return (
     <>
       <Navbar />
@@ -39,7 +45,7 @@ export const Screen = () => {
             filteredAPI().map( dataChild => (
               <Card 
                 img={ dataChild.img }
-                id={ dataChild.char_id }
+                key={ dataChild.char_id }
                 name={ dataChild.name }
                 nickname={ dataChild.nickname }
               />

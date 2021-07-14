@@ -9,8 +9,8 @@ export const Navbar = React.memo(() => {
     <div className="header">
       <nav className="navigation">
         <ul className="navigation__list">
-          <li className="navigation__item"><NavLink style={ { color: "white"} } activeStyle={{color: "#ec5732"}} exact to="/">Breaking Bad</NavLink></li>
-          <li className="navigation__item"><NavLink style={ { color: "white"} } activeStyle={{color: "#ec5732"}} exact to="/bcs">Better Call Saul</NavLink></li>
+          <li className="navigation__item"><NavLink style={ { color: "white"} } activeStyle={{color: "#ec5732"}} exact to="/screen/breaking bad">Breaking Bad</NavLink></li>
+          <li className="navigation__item"><NavLink style={ { color: "white"} } activeStyle={{color: "#ec5732"}} exact to="/screen/better call saul">Better Call Saul</NavLink></li>
           <li className="navigation__item"><NavLink style={ { color: "white"} } activeStyle={{color: "#ec5732"}} exact to="/search">Search character</NavLink></li>
         </ul>
       </nav>
