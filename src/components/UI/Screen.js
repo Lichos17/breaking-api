@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, Redirect, useParams } from 'react-router-dom';
+import { Redirect, useParams } from 'react-router-dom';
 import { useFetch } from '../../hooks/useFetch';
 import { Buttons } from './Buttons';
 import { Card } from './Card';
